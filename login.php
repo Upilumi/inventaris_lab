@@ -64,7 +64,7 @@ if (isset($_POST['login'])) {
   <div class="card shadow-lg">
     <div class="card-body p-4">
 
-      <h5 class="text-center mb-3">Login Sistem</h5>
+      <h5 class="text-center mb-3">Login</h5>
 
       <?php if (isset($error)) { ?>
         <div class="alert alert-danger text-center">
