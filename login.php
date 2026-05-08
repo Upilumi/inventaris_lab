@@ -58,7 +58,7 @@ if (isset($_POST['login'])) {
       class="mb-2"
     >
     <h4 class="fw-bold mb-0">SMK UNGGULAN NU MOJOAGUNG</h4>
-    <small>Sistem Inventaris LAB Komputer</small>
+    <small>Sistem Inventaris LAB TKJ</small>
   </div>
 
   <div class="card shadow-lg">
