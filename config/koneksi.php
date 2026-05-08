@@ -3,8 +3,8 @@
 date_default_timezone_set('Asia/Jakarta');
 
 $host = "localhost";
-$user = "inventaris_user";
-$pass = "123321";
+$user = "labuser";
+$pass = "123456";
 $db   = "inventaris_lab";
 
 $conn = mysqli_connect($host, $user, $pass, $db);
