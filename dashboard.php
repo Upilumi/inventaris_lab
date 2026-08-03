@@ -74,7 +74,7 @@ include 'layout/layout_start.php';
 }
 </style>
 
-<h4 class="mb-4">Dashboard KEREN</h4>
+<h4 class="mb-4">Dashboard</h4>
 
 <!-- ===================== -->
 <!-- CARD UTAMA -->
