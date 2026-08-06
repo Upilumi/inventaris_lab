@@ -20,7 +20,15 @@ if (isset($_POST['login'])) {
 
     $_SESSION['login'] = true;
     $_SESSION['username'] = $data['username'];
+    $_SESSION['nama'] = $data['nama'];
     $_SESSION['role'] = $data['role'];
+
+    log_activity(
+        "🔐",
+        "primary",
+        "Login ke sistem",
+        $_SESSION['nama']
+    );
 
     header("Location: dashboard.php");
     exit;

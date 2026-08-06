@@ -109,6 +109,84 @@ setInterval(() => {
     });
 }, 5000);
 
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+
+const ctx = document.getElementById('inventarisChart');
+
+if(ctx){
+
+new Chart(ctx,{
+
+type:'bar',
+
+data:{
+
+labels:['Total','Baik','Rusak'],
+
+datasets:[{
+
+label:'Jumlah Barang',
+
+data:[
+<?= $totalBarang ?>,
+<?= $totalBaik ?>,
+<?= $totalRusak ?>
+],
+
+borderWidth:1
+
+}]
+
+},
+
+options:{
+responsive:true,
+plugins:{
+legend:{
+display:false
+}
+}
+}
+
+});
+
+}
+
+const pie=document.getElementById('pieChart');
+
+if(pie){
+
+new Chart(pie,{
+
+type:'doughnut',
+
+data:{
+
+labels:['Baik','Rusak'],
+
+datasets:[{
+
+data:[
+<?= $totalBaik ?>,
+<?= $totalRusak ?>
+]
+
+}]
+
+},
+
+options:{
+responsive:true
+}
+
+});
+
+}
+
 </script>
 
 <audio id="notifSound">

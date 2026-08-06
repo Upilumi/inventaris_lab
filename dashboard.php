@@ -56,6 +56,8 @@ AND status='Disetujui'
 $nLab = mysqli_fetch_assoc($qLab)['jml'] ?? 0;
 
 include 'layout/layout_start.php';
+
+include 'layout/dashboard/hero.php';
 ?>
 
 <style>
@@ -72,112 +74,61 @@ include 'layout/layout_start.php';
 .progress{
     height:6px;
 }
+
+.dashboard-hero{
+    border-radius:20px;
+    background:linear-gradient(135deg,#0d6efd,#20c997);
+    color:white;
+}
+
+.dashboard-hero p,
+.dashboard-hero small{
+    color:rgba(255,255,255,.9)!important;
+}
+
+.dashboard-hero h5{
+    color:white;
+}
 </style>
 
-<h4 class="mb-4">Dashboard</h4>
+<?php include 'layout/dashboard/cards.php'; ?>
 
-<!-- ===================== -->
-<!-- CARD UTAMA -->
-<!-- ===================== -->
-<div class="row g-4">
+<?php include 'layout/dashboard/charts.php'; ?>
 
-<!-- TOTAL -->
-<div class="col-12 col-md-4">
-<div class="card card-dashboard shadow-sm">
-<div class="card-body d-flex justify-content-between align-items-center">
+<div class="row mt-4">
 
-<div>
-<h6>Total Barang</h6>
-<h2 class="text-primary"><?= $totalBarang ?></h2>
-<small class="text-muted">Semua inventaris</small>
-</div>
+    <div class="col-lg-8">
 
-<div class="icon-box text-primary">📦</div>
+        <?php
+        include 'layout/dashboard/activity.php';
+        ?>
 
-</div>
-</div>
-</div>
+    </div>
 
-<!-- BAIK -->
-<div class="col-12 col-md-4">
-<div class="card card-dashboard shadow-sm">
-<div class="card-body">
+    <div class="col-lg-4">
 
-<div class="d-flex justify-content-between align-items-center">
-<div>
-<h6>Kondisi Baik</h6>
-<h2 class="text-success"><?= $totalBaik ?></h2>
-</div>
-<div class="icon-box text-success">✅</div>
-</div>
+        <?php
+        include 'layout/dashboard/quick_action.php';
+        ?>
 
-<div class="progress mt-2">
-<div class="progress-bar bg-success" style="width:<?= $persenBaik ?>%"></div>
-</div>
-
-<small class="text-muted"><?= $persenBaik ?>%</small>
-
-</div>
-</div>
-</div>
-
-<!-- RUSAK -->
-<div class="col-12 col-md-4">
-<div class="card card-dashboard shadow-sm">
-<div class="card-body">
-
-<div class="d-flex justify-content-between align-items-center">
-<div>
-<h6>Rusak</h6>
-<h2 class="text-danger"><?= $totalRusak ?></h2>
-</div>
-<div class="icon-box text-danger">⚠️</div>
-</div>
-
-<div class="progress mt-2">
-<div class="progress-bar bg-danger" style="width:<?= $persenRusak ?>%"></div>
-</div>
-
-<small class="text-muted"><?= $persenRusak ?>%</small>
-
-</div>
-</div>
-</div>
+    </div>
 
 </div>
 
-<!-- ===================== -->
-<!-- INFO TAMBAHAN -->
-<!-- ===================== -->
-<div class="row g-4 mt-3">
+<div class="row mt-4">
 
-<div class="col-12 col-md-4">
-<div class="card shadow-sm border-0">
-<div class="card-body">
-<h6>Barang Rusak</h6>
-<h4 class="text-danger"><?= $totalRusak ?></h4>
-</div>
-</div>
-</div>
+    <div class="col-lg-6">
+        <?php include 'layout/dashboard/latest_items.php'; ?>
+    </div>
 
-<div class="col-12 col-md-4">
-<div class="card shadow-sm border-0">
-<div class="card-body">
-<h6>Sedang Dipinjam</h6>
-<h4 class="text-warning"><?= $nPinjam ?></h4>
-</div>
-</div>
-</div>
+    <div class="col-lg-6">
 
-<div class="col-12 col-md-4">
-<div class="card shadow-sm border-0">
-<div class="card-body">
-<h6>Jadwal LAB Hari Ini</h6>
-<h4 class="text-success"><?= $nLab ?></h4>
-</div>
-</div>
-</div>
+        <!-- nanti kita isi Barang Hampir Habis -->
+
+    </div>
 
 </div>
+
+<?php include 'layout/dashboard/widgets.php'; ?>
 
 <?php include 'layout/layout_end.php'; ?>
