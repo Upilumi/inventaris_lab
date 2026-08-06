@@ -43,6 +43,32 @@ $notifCount = mysqli_num_rows($qNotif);
 include 'layout/layout_start.php';
 ?>
 
+<?php if(isset($_GET['success']) && $_GET['success']=="tambah"): ?>
+
+<div class="toast-container position-fixed top-0 end-0 p-3">
+
+    <div class="toast text-bg-success border-0" id="toastSuccess">
+
+        <div class="d-flex">
+
+            <div class="toast-body">
+                ✅ Barang berhasil ditambahkan.
+            </div>
+
+            <button
+                type="button"
+                class="btn-close btn-close-white me-2 m-auto"
+                data-bs-dismiss="toast">
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<?php endif; ?>
+
 <!-- HEADER -->
 <h4 class="mb-3 border-start border-4 ps-3"
     style="border-color:var(--nu-hijau)">
@@ -162,5 +188,25 @@ if (mysqli_num_rows($data) > 0) {
 
 </div>
 </div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    var toastEl = document.getElementById("toastSuccess");
+
+    if(toastEl){
+
+        var toast = new bootstrap.Toast(toastEl,{
+            delay:3000
+        });
+
+        toast.show();
+
+    }
+
+});
+
+</script>
 
 <?php include 'layout/layout_end.php'; ?>
