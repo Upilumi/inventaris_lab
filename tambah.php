@@ -54,7 +54,7 @@ if (isset($_POST['simpan'])) {
             $_SESSION['nama']
         );
 
-        header("Location: data.php?success=tambah");
+        header("Location: data.php?status=success&message=Barang berhasil ditambahkan");
         exit;
 
     } else {

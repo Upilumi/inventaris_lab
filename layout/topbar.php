@@ -105,7 +105,11 @@ $qNotif = $qNotif ?? null;
       <ul class="dropdown-menu dropdown-menu-end shadow">
         <li><a class="dropdown-item" href="#">Profil</a></li>
         <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
+        <li><a href="#"
+          class="dropdown-item text-danger"
+          onclick="confirmLogout('logout.php'); return false;">
+            🚪 Logout
+        </a>
       </ul>
     </div>
 

@@ -59,8 +59,12 @@ $uri  = basename($_SERVER['PHP_SELF']);
   <?php } ?>
 
   <!-- LOGOUT -->
-  <a href="logout.php" class="text-danger">
-    🚪 <span class="menu-text">Logout</span>
+  <a href="#"
+  class="nav-link text-danger"
+  onclick="confirmLogout('logout.php'); return false;">
+
+  🚪 Logout
+
   </a>
 
 </div>

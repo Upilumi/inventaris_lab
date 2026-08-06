@@ -189,6 +189,10 @@ responsive:true
 
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script src="assets/js/sweetalert.js"></script>
+
 <audio id="notifSound">
   <source src="assets/sound/notif.mp3" type="audio/mpeg">
 </audio>

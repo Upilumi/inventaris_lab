@@ -157,9 +157,14 @@ if (mysqli_num_rows($data) > 0) {
   <td>
     <a href="edit.php?id=<?= $d['id'] ?>" class="btn btn-warning btn-sm">✏️</a>
 
-    <a href="hapus.php?id=<?= $d['id'] ?>" 
-       onclick="return confirm('Yakin hapus data ini?')"
-       class="btn btn-danger btn-sm">🗑️</a>
+    <a href="javascript:void(0)"
+      onclick="confirmDelete('hapus.php?id=<?= $d['id'] ?>')"
+      class="btn btn-danger btn-sm"
+      title="Hapus">
+
+        🗑️
+
+    </a>
 
     <a href="label.php?id=<?= $d['id'] ?>" 
        target="_blank"

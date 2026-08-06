@@ -242,7 +242,9 @@ body {
 
 </head>
 
-<body>
+<body
+data-status="<?= $_GET['status'] ?? '' ?>"
+data-message="<?= $_GET['message'] ?? '' ?>">
 
 <div id="overlay" onclick="toggleSidebarMobile()"></div>
 
