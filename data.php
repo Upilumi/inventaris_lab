@@ -20,15 +20,30 @@ $keyword = mysqli_real_escape_string($conn, $keyword);
 // =========================
 if ($keyword != '') {
   $data = mysqli_query($conn, "
-    SELECT * FROM inventaris 
-    WHERE 
-      kode_barang LIKE '%$keyword%' OR
-      nama_barang LIKE '%$keyword%' OR
-      lokasi LIKE '%$keyword%'
-    ORDER BY id DESC
+  SELECT
+      inventaris.*,
+      kategori.nama_kategori,
+      kategori.tipe
+  FROM inventaris
+  LEFT JOIN kategori
+  ON inventaris.kategori_id = kategori.id
+  WHERE
+      inventaris.kode_barang LIKE '%$keyword%' OR
+      inventaris.nama_barang LIKE '%$keyword%' OR
+      inventaris.lokasi LIKE '%$keyword%'
+  ORDER BY inventaris.id DESC
   ");
 } else {
-  $data = mysqli_query($conn, "SELECT * FROM inventaris ORDER BY id DESC");
+  $data = mysqli_query($conn, "
+  SELECT
+      inventaris.*,
+      kategori.nama_kategori,
+      kategori.tipe
+  FROM inventaris
+  LEFT JOIN kategori
+  ON inventaris.kategori_id = kategori.id
+  ORDER BY inventaris.id DESC
+  ");
 }
 
 $qNotif = mysqli_query($conn, "
@@ -115,6 +130,7 @@ Data Inventaris
   <th>No</th>
   <th>Kode</th>
   <th>Nama</th>
+  <th>Kategori</th>
   <th>Jumlah</th>
   <th>Kondisi</th>
   <th>Lokasi</th>
@@ -137,6 +153,15 @@ if (mysqli_num_rows($data) > 0) {
   <td><?= $no++ ?></td>
   <td><?= htmlspecialchars($d['kode_barang']) ?></td>
   <td><?= htmlspecialchars($d['nama_barang']) ?></td>
+  <td>
+      <?= htmlspecialchars($d['nama_kategori'] ?? '-') ?>
+
+      <?php if(($d['tipe'] ?? '') == 'asset'){ ?>
+          <span class="badge bg-primary ms-1">Asset</span>
+      <?php } elseif(($d['tipe'] ?? '') == 'consumable'){ ?>
+          <span class="badge bg-success ms-1">Consumable</span>
+      <?php } ?>
+  </td>
   <td><?= $d['jumlah'] ?></td>
 
   <td>

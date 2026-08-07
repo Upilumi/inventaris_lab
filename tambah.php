@@ -9,6 +9,13 @@ if (!isset($_SESSION['login'])) {
 include 'config/koneksi.php';
 require_once 'helpers/activity_helper.php';
 
+// Ambil semua kategori
+$qKategori = mysqli_query($conn,"
+SELECT *
+FROM kategori
+ORDER BY nama_kategori ASC
+");
+
 /*
 |--------------------------------------------------------------------------
 | PROSES SIMPAN DATA
@@ -19,6 +26,7 @@ if (isset($_POST['simpan'])) {
 
     $kode       = mysqli_real_escape_string($conn, $_POST['kode']);
     $nama       = mysqli_real_escape_string($conn, $_POST['nama']);
+    $kategori   = (int) $_POST['kategori'];
     $jumlah     = (int) $_POST['jumlah'];
     $kondisi    = mysqli_real_escape_string($conn, $_POST['kondisi']);
     $lokasi     = mysqli_real_escape_string($conn, $_POST['lokasi']);
@@ -29,6 +37,7 @@ if (isset($_POST['simpan'])) {
         (
             kode_barang,
             nama_barang,
+            kategori_id,
             jumlah,
             kondisi,
             lokasi,
@@ -38,6 +47,7 @@ if (isset($_POST['simpan'])) {
         (
             '$kode',
             '$nama',
+            '$kategori',
             '$jumlah',
             '$kondisi',
             '$lokasi',
@@ -96,6 +106,35 @@ include 'layout/layout_start.php';
                                 class="form-control"
                                 placeholder="Contoh: PC-LAB-01"
                                 required>
+                        </div>
+
+                        <div class="mb-3">
+
+                        <label class="form-label">
+
+                        Kategori
+
+                        </label>
+
+                        <select
+                        name="kategori"
+                        class="form-select"
+                        required>
+
+                        <option value="">-- Pilih Kategori --</option>
+
+                        <?php while($k=mysqli_fetch_assoc($qKategori)){ ?>
+
+                        <option value="<?= $k['id']; ?>">
+
+                        <?= $k['nama_kategori']; ?>
+
+                        </option>
+
+                        <?php } ?>
+
+                        </select>
+
                         </div>
 
                         <div class="mb-3">
